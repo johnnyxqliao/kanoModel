@@ -9,11 +9,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>空白页 </title>
-		<!-- basic styles -->
-		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-		<!-- fonts -->
-		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
