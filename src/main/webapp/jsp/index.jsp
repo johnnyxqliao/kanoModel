@@ -6,7 +6,8 @@
 <meta charset="utf-8" />
 <title>Kano分析</title>
 
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 <link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
 <link rel="stylesheet" href="assets/css/datepicker.css" />
@@ -14,15 +15,16 @@
 <link rel="stylesheet" href="assets/css/ace.min.css" />
 <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
-
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
 
 <script src="assets/js/ace-extra.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
+<script src="js/echarts.js"></script>
 
 </head>
 <body>
-	
+
 	<div class="navbar navbar-default" id="navbar"></div>
 	<div class="main-container" id="main-container">
 		<div class="main-container-inner">
@@ -90,6 +92,11 @@
 									style="margin-right: 40px" onclick="deleterow()">
 									<i class="glyphicon glyphicon-trash"></i>删除
 								</button>
+								
+								<button type="button" class="btn btn-primary"
+									style="margin-right: 40px" onclick="drawKano()">
+									<i class="glyphicon glyphicon-wrench"></i>分析
+								</button>
 
 								<button type="button" class="btn btn-primary"
 									style="align: right" onclick="saveProject()">
@@ -120,73 +127,40 @@
 								class="table table-hover table-bordered">
 								<thead>
 									<tr class="success">
-										<th class="bs-checkbox " style="width: 36px;"
-											data-field="state"><div class="th-inner ">
-												<input name="btSelectAll" type="checkbox">
-											</div>
+										<th></th>
+										<th style="" data-field="type"><div class="th-inner ">类别</div>
 											<div class="fht-cell"></div></th>
-										<th style="" data-field="procedureId"><div
-												class="th-inner ">类别</div>
-											<div class="fht-cell"></div></th>
-										<th style="" data-field="procedureName"><div
+										<th style="" data-field="charmNeed"><div
 												class="th-inner ">魅力型需求</div>
 											<div class="fht-cell"></div></th>
-										<th style="" data-field="worksationName"><div
+										<th style="" data-field="expectNeed"><div
 												class="th-inner ">期望型需求</div>
 											<div class="fht-cell"></div></th>
-										<th style="" data-field="pNumber">
+										<th style="" data-field="basicNeed">
 											<div class="th-inner ">基本型需求</div>
 											<div class="fht-cell"></div>
 										</th>
-										<th style="" data-field="workTime">
+										<th style="" data-field="indifferentNeed">
 											<div class="th-inner ">无差异需求</div>
 											<div class="fht-cell"></div>
 										</th>
-										<th style="" data-field="preWork">
+										<th style="" data-field="reverseNeed">
 											<div class="th-inner ">反向型需求</div>
 											<div class="fht-cell"></div>
 										</th>
-										<th style="" data-field="nonValueTime"><div
-												class="th-inner ">问题问卷</div>
+										<th style="" data-field="problem"><div class="th-inner ">问题问卷</div>
 											<div class="fht-cell"></div></th>
-										<th style="" data-field="changeTime"><div
-												class="th-inner ">分类结果</div>
+										<th style="" data-field="result"><div class="th-inner ">分类结果</div>
 											<div class="fht-cell"></div></th>
 									</tr>
 								</thead>
-
-								<tbody>
-									<tr class="no-records-found">
-										<td colspan="10">没有找到匹配的记录</td>
-									</tr>
-								</tbody>
 							</table>
-						</div>
-						<div class="fixed-table-footer" style="display: none;">
-							<table>
-								<tbody>
-									<tr></tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="fixed-table-pagination" style="display: none;">
-							<div class="pull-left pagination-detail">
-								<span class="pagination-info">显示第 1 到第 0 条记录，总共 0 条记录</span> <span
-									class="page-list" style="display: none;">每页显示 <span
-									class="btn-group dropup"><button type="button"
-											class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown">
-											<span class="page-size">10</span> <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li role="menuitem" class="active"><a href="#">10</a></li>
-										</ul></span> 条记录</span>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div id="main" style="width: 600px;height:600px;"></div>
 	</div>
 
 	<div class="modal fade" id="itemAdd" tabindex="-1" role="dialog"
@@ -200,47 +174,57 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
 				</div>
-				
+
 				<div class="modal-body">
 					<div id="table" class="table-editable">
-				    <table class="table-hover table-bordered table">
-				    <tr>
-				        <th colspan="2" style="text-align:center;">评价类别：</th>
-				        <th colspan="5" style="text-align:center;" contenteditable="true"></th>
-				      </tr>
-				     <tr>
-				        <th colspan="2" style="text-align:center;">产品/服务需求</th>
-				        <th colspan="5" style="text-align:center;">负向问题（没有该项功能）</th>
-				      </tr>
-				      <tr>
-				        <th></th>
-				        <th>量表</th>
-			         	<th>喜欢</th>
-				        <th>理应如此</th>
-				        <th>无所谓</th>
-			         	<th>能忍受</th>
-				        <th>不喜欢</th>
-				      </tr>
-				    </table>
-				  </div>
+						<table class="table-hover table-bordered table">
+							<tr>
+								<th colspan="2" style="text-align: center;">评价类别：</th>
+								<th colspan="5" style="text-align: center;"
+									contenteditable="true"></th>
+							</tr>
+							<tr>
+								<th colspan="2" style="text-align: center;">产品/服务需求</th>
+								<th colspan="5" style="text-align: center;">负向问题（没有该项功能）</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th>量表</th>
+								<th>喜欢</th>
+								<th>理应如此</th>
+								<th>无所谓</th>
+								<th>能忍受</th>
+								<th>不喜欢</th>
+							</tr>
+						</table>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary" id="export-btn" onclick="addItem()">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						id="export-btn" onclick="addItem()">确定</button>
 					<p id="export"></p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script src='js/jquery-ui.min.js'></script>
 	<script src='js/underscore.js'></script>
-    <script src="js/solveData.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/solveData.js"></script>
+	<script
+		src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/typeahead-bs2.min.js"></script>
-	<script type="text/javascript" src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript" src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
-	<script type="text/javascript" src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+	<script type="text/javascript"
+		src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<script type="text/javascript" src="assets/js/ace-elements.min.js"></script>
 	<script type="text/javascript" src="assets/js/ace.min.js"></script>
 	<script src="js/button.js"></script>
