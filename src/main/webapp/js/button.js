@@ -33,26 +33,39 @@ function deleterow(){
         $("table#myBootstrapTtable").find("tr:eq("+n+")").remove();
     });
 }
-//绘制Kano模型
-function drawKano(){
-	 // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
- // Prime Costs and Prices for ACME Fashion\nCollection "Spring-Summer, 2016"
- // Data from https://playground.anychart.com/gallery/7.12.0/Error_Charts/Marker_Chart
- var dimensions = [
-     'name', 'Price', 'Prime cost', 'Prime cost min', 'Prime cost max', 'Price min', 'Price max'
- ];
- var data = [
-     ['Blouse "Blue Viola"', 100, 100, 76.75, 116.75, 80, 110],
-     ['Dress "Daisy"', 155.8, 144.03, 126.03, 156.03, 129.8, 188.8],
 
-     ['Sweater "Fluffy Comfort"', 790.34, 678.34, 660.34, 690.34, 762.34, 824.34]
- ];
+//获取表格数据
+function getTableData(){
+	var kanoTable = document.getElementById('myBootstrapTtable');
+	var kanoTableData = kanoTable.outerText.split('\n');
+	kanoTableData.splice(0,8);
+	
+	var data = [];
+	for(var i=0;i<kanoTableData.length-1;i++){
+		var kanoData = kanoTableData[i].split('	');
+		for(var j=2;j<6;j++){
+			kanoData[j]=Number(kanoData[j]);
+		}
+		var kanoSi = (kanoData[2]+kanoData[3])/(kanoData[2]+kanoData[3]+kanoData[4]+kanoData[5]);
+		var kanoDsi = (kanoData[3]+kanoData[4])/(kanoData[2]+kanoData[3]+kanoData[4]+kanoData[5]);
+		var resultData = [kanoData[1], kanoDsi, kanoSi, kanoSi-0.05, kanoSi+0.05, kanoDsi-0.05, kanoDsi+0.05];
+		data.push(resultData);
+	}
+	return data;
+}
+
+
+
+function drawKano(){
+	data = getTableData();
+	var myChart = echarts.init(document.getElementById('main'));
+	var dimensions = [
+     'name', 'Price', 'Prime cost', 'Prime cost min', 'Prime cost max', 'Price min', 'Price max'
+     ];
 
  function renderItem(params, api) {
      var children = [];
      var coordDims = ['x', 'y'];
-
      for (var baseDimIdx = 0; baseDimIdx < 2; baseDimIdx++) {
          var otherDimIdx = 1 - baseDimIdx;
          var encode = params.encode;
@@ -64,12 +77,10 @@ function drawKano(){
          param[otherDimIdx] = api.value(encode[coordDims[otherDimIdx]][2]);
          var lowPoint = api.coord(param);
          var halfWidth = 5;
-
          var style = api.style({
              stroke: api.visual('color'),
              fill: null
          });
-
          children.push({
              type: 'line',
              shape: makeShape(
@@ -96,7 +107,6 @@ function drawKano(){
              style: style
          });
      }
-
      function makeShape(baseDimIdx, base1, value1, base2, value2) {
          var shape = {};
          shape[coordDims[baseDimIdx] + '1'] = base1;
@@ -105,45 +115,40 @@ function drawKano(){
          shape[coordDims[1 - baseDimIdx] + '2'] = value2;
          return shape;
      }
-
      return {
          type: 'group',
          children: children
      };
  }
-
  option = {
-     tooltip: {
-     },
+	 toolbox: {
+	        show: true,
+	        orient: 'vertical',
+	        left: 'right',
+	        top: 'center',
+	        feature: {
+	            saveAsImage: {}
+	        }
+	    },
      legend: {
-         data: ['bar', 'error']
+         data: ['bar']
      },
-     dataZoom: [{
-         type: 'slider',
-         height: 8,
-         bottom: 20,
-         borderColor: 'transparent',
-         backgroundColor: '#e2e2e2',
-         handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z', // jshint ignore:line
-         handleSize: 20,
-         handleStyle: {
-             shadowBlur: 6,
-             shadowOffsetX: 1,
-             shadowOffsetY: 2,
-             shadowColor: '#aaa'
-         }
-     }, {
-         type: 'inside'
-     }],
      grid: {
          bottom: 80
      },
-     xAxis: {},
-     yAxis: {},
+     xAxis: {splitLine:{show: false}
+     },
+     yAxis: {splitLine:{show: false}},
      series: [{
          symbolSize: 20,
          type: 'scatter',
          name: 'error',
+         markLine : {
+             data : [
+                 {type : 'average', name: '平均值'},
+                 { xAxis: 0.5 },
+             ]
+         },
          data: data,
          dimensions: dimensions,
          encode: {
@@ -175,31 +180,141 @@ function drawKano(){
          type: 'scatter',
          symbolSize: 1,
          symbol: 'roundRect',
-         data: [[1, 1],[0.5, 1],[1.5, 1]],
+         data: [[0.25, 0.45]],
          label: {
-             normal: {
+        	 normal: {
                  position: 'left',
                  distance: 10,
                  show: true,
                  formatter: [
-                     'Label Text',
+                     '无差异需求',
                  ].join('\n'),
-                 backgroundColor: '#eee',
-                 borderColor: '#555',
-                 borderWidth: 2,
-                 borderRadius: 5,
-                 padding: 10,
-                 fontSize: 18,
+                 backgroundColor: '#FFFFFF',
+                 borderColor: '#FFFFFF',
+                 borderWidth: 0.5,
+                 borderRadius:8,
+                 padding: 8,
+                 fontSize: 14,
                  shadowBlur: 3,
                  shadowColor: '#888',
                  shadowOffsetX: 0,
                  shadowOffsetY: 3,
-                 textBorderColor: '#000',
-                 textBorderWidth: 3,
-                 color: '#fff'
+                 textBorderColor: '	#00BFFF',
+                 textBorderWidth: 1,
+                 color: '#00BFFF'
              }
          }
-     }]
+     },
+     {
+         type: 'scatter',
+         symbolSize: 1,
+         symbol: 'roundRect',
+         data: [[0.25, 0.95]],
+         label: {
+        	 normal: {
+                 position: 'left',
+                 distance: 10,
+                 show: true,
+                 formatter: [
+                     '魅力需求',
+                 ].join('\n'),
+                 backgroundColor: '#FFFFFF',
+                 borderColor: '#FFFFFF',
+                 borderWidth: 0.5,
+                 borderRadius:8,
+                 padding: 8,
+                 fontSize: 14,
+                 shadowBlur: 3,
+                 shadowColor: '#888',
+                 shadowOffsetX: 0,
+                 shadowOffsetY: 3,
+                 textBorderColor: '	#00BFFF',
+                 textBorderWidth: 1,
+                 color: '#00BFFF'
+             }
+         }
+     },
+     {
+         type: 'scatter',
+         symbolSize: 1,
+         symbol: 'roundRect',
+         data: [[0.75, 0.45]],
+         label: {
+        	 normal: {
+                 position: 'left',
+                 distance: 10,
+                 show: true,
+                 formatter: [
+                	 '基本需求',
+                 ].join('\n'),
+                 backgroundColor: '#FFFFFF',
+                 borderColor: '#FFFFFF',
+                 borderWidth: 0.5,
+                 borderRadius:8,
+                 padding: 8,
+                 fontSize: 14,
+                 shadowBlur: 3,
+                 shadowColor: '#888',
+                 shadowOffsetX: 0,
+                 shadowOffsetY: 3,
+                 textBorderColor: '	#00BFFF',
+                 textBorderWidth: 1,
+                 color: '#00BFFF'
+             }
+         }
+     },
+     {
+         type: 'scatter',
+         symbolSize: 1,
+         symbol: 'roundRect',
+         data: [[0.75, 0.95]],
+         label: {
+        	 normal: {
+                 position: 'left',
+                 distance: 10,
+                 show: true,
+                 formatter: [
+                     '期望需求',
+                 ].join('\n'),
+                 backgroundColor: '#FFFFFF',
+                 borderColor: '#FFFFFF',
+                 borderWidth: 0.5,
+                 borderRadius:8,
+                 padding: 8,
+                 fontSize: 14,
+                 shadowBlur: 3,
+                 shadowColor: '#888',
+                 shadowOffsetX: 0,
+                 shadowOffsetY: 3,
+                 textBorderColor: '	#00BFFF',
+                 textBorderWidth: 1,
+                 color: '#00BFFF'
+             }
+         }
+     }
+     ]
  };
+ //添加文本框
+ for(var i=0;i<data.length;i++){
+	 var textObj = {//基础文本框
+	         type: 'scatter',
+	         symbolSize: 1,
+	         symbol: 'roundRect',
+	         data: [],
+	         label: {
+	        	 normal: {
+	                 position: 'left',
+	                 distance: 10,
+	                 show: true,
+	                 formatter: [
+	                     '',
+	                 ].join('\n'),
+	             }
+	         }
+	     };
+	 textObj.label.normal.formatter = [data[i][0]].join('\n');//定义文本内容
+	 textObj.data =[[data[i][2]+0.18, data[i][1]-0.03]];
+	 option.series.push(textObj);
+ }
     myChart.setOption(option);
 }

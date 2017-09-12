@@ -1,4 +1,11 @@
 //添加类别
+ 	var charmValue;//魅力型A
+    var exceptValue;//期望型O
+    var mustValue;//基本型M 
+    var indifferentValue;//无差异I
+    var reverseValue;//反向需求R
+    var problemValue;//问题Q
+    
 function addItem(){
 	var mytable = document.getElementById('table');
     var tableData = mytable.outerText.split('\n');
@@ -44,11 +51,10 @@ function addItem(){
     	return tempValue;
     }
     
-    var resultArr = [charmValue,'魅力型需求',exceptValue,'期望型需求',mustValue,'基本型需求',
-    				indifferentValue,'无差异需求',reverseValue,'反向型需求',problemValue,'问题问卷'];
+    var resultArr = [charmValue,'魅力型需求',exceptValue,'期望型需求',mustValue,'基本型需求'];
     var maxValue = 0;
     var maxName;
-    for(var i=0;i<6;i++){
+    for(var i=0;i<3;i++){
     	if(resultArr[2*i]>maxValue){
     		maxValue = resultArr[2*i];
     		maxName = resultArr[2*i+1];
