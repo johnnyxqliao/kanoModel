@@ -51,7 +51,8 @@ function addItem(){
     	return tempValue;
     }
     
-    var resultArr = [charmValue,'魅力型需求',exceptValue,'期望型需求',mustValue,'基本型需求'];
+    var resultArr = [charmValue,'魅力型需求',exceptValue,'期望型需求',mustValue,'基本型需求',
+    				indifferentValue,'无差异需求',reverseValue,'反向型需求',mustValue,'问题问卷'];
     var maxValue = 0;
     var maxName;
     for(var i=0;i<3;i++){

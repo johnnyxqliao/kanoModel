@@ -9,21 +9,44 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>空白页 </title>
-		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		
+		
+		
+		
+		<!-- basic styles -->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!-- ace styles -->
+		
+		
+
 		<link rel="stylesheet" href="assets/css/ace.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 		<script src="assets/js/ace-extra.min.js"></script>
+		
+		
+		
+		
 	</head>
+
 	<body>
-	<div class="navbar navbar-default" id="navbar" style="height: 40px;">
+	
+	<div class="navbar navbar-default" id="navbar">
     <script type="text/javascript">
         try {
             ace.settings.check('navbar', 'fixed')
         } catch (e) {
         }
     </script>
+
     <div class="navbar-container" id="navbar-container">
     
         <div class="navbar-header pull-left" >
@@ -34,17 +57,23 @@
                 <big class="center"> 小微企业多创新方法融合与集成应用平台
                 </big>
                 </big>
+                
             </a>
   		
+                
                 <small class="navbar-brand"  >
-                	Kano分析
+                	创新管理工具集
                 </small>
+             
+            	
+				
             
             <!-- /.brand -->
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
+                
 
             </ul>
             <!-- /.ace-nav -->

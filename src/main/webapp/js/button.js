@@ -121,6 +121,9 @@ function drawKano(){
      };
  }
  option = {
+	    title: {
+	        text: 'kano分析结果'
+	    },
 	 toolbox: {
 	        show: true,
 	        orient: 'vertical',
@@ -216,7 +219,7 @@ function drawKano(){
                  distance: 10,
                  show: true,
                  formatter: [
-                     '魅力需求',
+                     '基本需求',
                  ].join('\n'),
                  backgroundColor: '#FFFFFF',
                  borderColor: '#FFFFFF',
@@ -245,7 +248,7 @@ function drawKano(){
                  distance: 10,
                  show: true,
                  formatter: [
-                	 '基本需求',
+                	 '魅力需求',
                  ].join('\n'),
                  backgroundColor: '#FFFFFF',
                  borderColor: '#FFFFFF',
@@ -291,6 +294,19 @@ function drawKano(){
                  color: '#00BFFF'
              }
          }
+     },
+     {
+         type: 'scatter',
+         symbolSize: 1,
+         symbol: 'roundRect',
+         data: [[1, 1]],
+         label: {
+        	 normal: {
+                 position: 'left',
+                 distance: 10,
+                 show: false,
+             }
+         }
      }
      ]
  };
@@ -313,7 +329,7 @@ function drawKano(){
 	         }
 	     };
 	 textObj.label.normal.formatter = [data[i][0]].join('\n');//定义文本内容
-	 textObj.data =[[data[i][2]+0.18, data[i][1]-0.03]];
+	 textObj.data =[[data[i][2]+0.15, data[i][1]-0.04]];
 	 option.series.push(textObj);
  }
     myChart.setOption(option);

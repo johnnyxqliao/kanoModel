@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 <link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
 <link rel="stylesheet" href="assets/css/datepicker.css" />
 <link rel="stylesheet" href="assets/css/ui.jqgrid.css" />
@@ -24,8 +25,7 @@
 
 </head>
 <body>
-
-	<div class="navbar navbar-default" id="navbar"></div>
+<jsp:include page="/decorators/copyright.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<div class="main-container-inner">
 			<a class="menu-toggler" id="menu-toggler" href="#"> <span
@@ -131,26 +131,26 @@
 										<th style="" data-field="type"><div class="th-inner ">类别</div>
 											<div class="fht-cell"></div></th>
 										<th style="" data-field="charmNeed"><div
-												class="th-inner ">魅力型需求</div>
+												class="th-inner ">魅力型需求(A)</div>
 											<div class="fht-cell"></div></th>
 										<th style="" data-field="expectNeed"><div
-												class="th-inner ">期望型需求</div>
+												class="th-inner ">期望型需求(O)</div>
 											<div class="fht-cell"></div></th>
 										<th style="" data-field="basicNeed">
-											<div class="th-inner ">基本型需求</div>
+											<div class="th-inner ">基本型需求()</div>
 											<div class="fht-cell"></div>
 										</th>
 										<th style="" data-field="indifferentNeed">
-											<div class="th-inner ">无差异需求</div>
+											<div class="th-inner ">无差异需求(I)</div>
 											<div class="fht-cell"></div>
 										</th>
 										<th style="" data-field="reverseNeed">
-											<div class="th-inner ">反向型需求</div>
+											<div class="th-inner ">反向型需求(R)</div>
 											<div class="fht-cell"></div>
 										</th>
-										<th style="" data-field="problem"><div class="th-inner ">问题问卷</div>
+										<th style="" data-field="problem"><div class="th-inner ">问题问卷(Q)</div>
 											<div class="fht-cell"></div></th>
-										<th style="" data-field="result"><div class="th-inner ">分类结果</div>
+										<th style="" data-field="result"><div class="th-inner ">分类结果(R)</div>
 											<div class="fht-cell"></div></th>
 									</tr>
 								</thead>
@@ -208,6 +208,8 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/decorators/banner2.jsp"></jsp:include>	
+	
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<script
 		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
