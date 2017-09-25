@@ -1,13 +1,5 @@
-//添加类别
- 	var charmValue;//魅力型A
-    var exceptValue;//期望型O
-    var mustValue;//基本型M 
-    var indifferentValue;//无差异I
-    var reverseValue;//反向需求R
-    var problemValue;//问题Q
-    
-function addItem(){
-	var mytable = document.getElementById('table');
+function solveModel(){
+	var mytable = document.getElementById('modelTable');
     var tableData = mytable.outerText.split('\n');
     
     var projectName = tableData[0].split('	')[1];
@@ -28,7 +20,6 @@ function addItem(){
     	}
     }
     tableArr.push(projectName);
-    console.log(tableArr);
     }
     var charmValue = tableArr[0][1]+tableArr[0][2]+tableArr[0][3];
     var exceptValue = tableArr[0][4];
@@ -38,14 +29,11 @@ function addItem(){
 				tableArr[4][1]+tableArr[4][2]+tableArr[4][3];
     var problemValue = tableArr[0][0]+tableArr[4][4];
     
-    
     function cal(tableArr){
     	var tempValue = 0;
     	for(var i=0;i<3;i++){
     		for(var j=0;j<3;j++){
     			tempValue +=tableArr[1+i][1+j];
-    			console.log(tempValue);
-    			console.log(tableArr[1+i][1+j]);
     		}
     	}
     	return tempValue;
@@ -54,23 +42,13 @@ function addItem(){
     var resultArr = [charmValue,'魅力型需求',exceptValue,'期望型需求',mustValue,'基本型需求',
     				indifferentValue,'无差异需求',reverseValue,'反向型需求',mustValue,'问题问卷'];
     var maxValue = 0;
-    var maxName;
+    var maxName = '意向不明';
     for(var i=0;i<3;i++){
     	if(resultArr[2*i]>maxValue){
     		maxValue = resultArr[2*i];
     		maxName = resultArr[2*i+1];
     	}
     }
-    
-	$('<tr>'+
-			'<td ><input name="btSelectAll" type="checkbox"></td>'+
-			'<td>'+tableArr[5]+'</td>'+
-			'<td>'+charmValue+'</td>'+
-			'<td>'+exceptValue+'</td>'+
-			'<td>'+mustValue+'</td>'+
-			'<td>'+indifferentValue+'</td>'+
-			'<td>'+reverseValue+'</td>'+
-			'<td>'+problemValue+'</td>'+
-			'<td>'+maxName+'</td>'+
-			'<tr>').insertAfter($('#myBootstrapTtable tr:eq(0)'));
+    var modelStr =$('#tableBody').html();
+    return [tableArr[5],charmValue,exceptValue,mustValue,indifferentValue,reverseValue,problemValue,maxName,modelStr];
 }

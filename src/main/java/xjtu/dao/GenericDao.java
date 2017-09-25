@@ -79,7 +79,6 @@ public class GenericDao<T> {
         this.mysql1SessionFactory = mysql1SessionFactory;
     }
 
-
     public SessionFactory getMysql2SessionFactory() {
         return mysql2SessionFactory;
     }
@@ -194,7 +193,6 @@ public class GenericDao<T> {
         getSession().beginTransaction();
         getSession().save(entity);
         getSession().getTransaction().commit();
-        //getSession().flush();
     }
 
     public void delete(T entity) {
@@ -205,7 +203,6 @@ public class GenericDao<T> {
         getSession().beginTransaction();
         getSession().delete(entity);
         getSession().getTransaction().commit();
-//		getSession().flush();
     }
 
     public void deleteById(Class<T> clz, Serializable id) {
@@ -231,7 +228,6 @@ public class GenericDao<T> {
             getSession().delete(bean);
         }
         getSession().getTransaction().commit();
-//		getSession().flush();
     }
 
     /**

@@ -7,6 +7,6 @@
 		<s:head />
 	</head>
 	<body>
-		test1
+	this is a hibernate demo
 	</body>
 </html>

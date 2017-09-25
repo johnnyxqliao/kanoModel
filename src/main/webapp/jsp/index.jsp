@@ -5,27 +5,20 @@
 <head>
 <meta charset="utf-8" />
 <title>Kano分析</title>
-
-<link rel="stylesheet"
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 <link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
 <link rel="stylesheet" href="assets/css/datepicker.css" />
 <link rel="stylesheet" href="assets/css/ui.jqgrid.css" />
 <link rel="stylesheet" href="assets/css/ace.min.css" />
 <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-<link rel="stylesheet"
-	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
-
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-table.min.css">
 <script src="assets/js/ace-extra.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
-<script src="js/echarts.js"></script>
-
+<script src="js/outerJs/echarts.js"></script>
 </head>
 <body>
-<jsp:include page="/decorators/copyright.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<div class="main-container-inner">
 			<a class="menu-toggler" id="menu-toggler" href="#"> <span
@@ -77,92 +70,57 @@
 			</div>
 		</div>
 	</div>
-	<div class="main-content">
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-				<div class="bootstrap-table">
-					<div class="fixed-table-toolbar">
-						<div class="bs-bars pull-left" style="height: 45px;">
-							<div id="toolbar" class="btn-group">
-								<button type="button" class="btn btn-primary" onclick="addrow()">
-									<i class="glyphicon glyphicon-plus"></i>添加
-								</button>
+	<div class="main-container">
 
-								<button type="button" class="btn btn-primary"
-									style="margin-right: 40px" onclick="deleterow()">
-									<i class="glyphicon glyphicon-trash"></i>删除
-								</button>
-								
-								<button type="button" class="btn btn-primary"
-									style="margin-right: 40px" onclick="drawKano()">
-									<i class="glyphicon glyphicon-wrench"></i>分析
-								</button>
+		<div id="toolbar" class="btn-group">
 
-								<button type="button" class="btn btn-primary"
-									style="align: right" onclick="saveProject()">
-									<i class="glyphicon glyphicon-cloud">保存工程</i>
-								</button>
-							</div>
-						</div>
-						<div class="columns columns-right btn-group pull-right">
-							<button class="btn btn-default" type="button" name="refresh"
-								aria-label="refresh" title="刷新">
-								<i class="glyphicon glyphicon-refresh icon-refresh"></i>
-							</button>
-							<button class="btn btn-default" type="button" name="toggle"
-								aria-label="toggle" title="切换">
-								<i class="glyphicon glyphicon-list-alt icon-list-alt"> </i>
-							</button>
-						</div>
-						<div class="pull-right search" style="padding-top: 2px;">
-							<input class="form-control" type="text" placeholder="搜索">
-						</div>
-					</div>
-					<div class="fixed-table-container" style="padding-bottom: 0px;">
-						<div class="fixed-table-body">
-							<table id="myBootstrapTtable" data-search="true"
-								data-show-refresh="true" data-show-toggle="true"
-								data-toolbar="#toolbar" data-pagination="true"
-								data-side-pagination="client"
-								class="table table-hover table-bordered">
-								<thead>
-									<tr class="success">
-										<th></th>
-										<th style="" data-field="type"><div class="th-inner ">类别</div>
-											<div class="fht-cell"></div></th>
-										<th style="" data-field="charmNeed"><div
-												class="th-inner ">魅力型需求(A)</div>
-											<div class="fht-cell"></div></th>
-										<th style="" data-field="expectNeed"><div
-												class="th-inner ">期望型需求(O)</div>
-											<div class="fht-cell"></div></th>
-										<th style="" data-field="basicNeed">
-											<div class="th-inner ">基本型需求()</div>
-											<div class="fht-cell"></div>
-										</th>
-										<th style="" data-field="indifferentNeed">
-											<div class="th-inner ">无差异需求(I)</div>
-											<div class="fht-cell"></div>
-										</th>
-										<th style="" data-field="reverseNeed">
-											<div class="th-inner ">反向型需求(R)</div>
-											<div class="fht-cell"></div>
-										</th>
-										<th style="" data-field="problem"><div class="th-inner ">问题问卷(Q)</div>
-											<div class="fht-cell"></div></th>
-										<th style="" data-field="result"><div class="th-inner ">分类结果(R)</div>
-											<div class="fht-cell"></div></th>
-									</tr>
-								</thead>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
+			<button type="button" class="btn btn-primary" onclick="addrow()">
+				<i class="glyphicon glyphicon-plus"></i>添加
+			</button>
+
+			<button type="button" class="btn btn-primary"
+				style="margin-right: 40px" onclick="deleterow()">
+				<i class="glyphicon glyphicon-trash"></i>删除
+			</button>
+
+			<button type="button" class="btn btn-primary"
+				style="margin-right: 40px" onclick="drawKano()">
+				<i class="glyphicon glyphicon-wrench"></i>分析
+			</button>
+
+			<button type="button" class="btn btn-primary" style="align: right"
+				onclick="saveProject()">
+				<i class="glyphicon glyphicon-cloud">保存工程</i>
+			</button>
 		</div>
-		<div id="main" style="width: 600px;height:600px;"></div>
 	</div>
-
+	<div class="fixed-table-container" style="padding-bottom: 0px;">
+		<table id="myBootstrapTtable" data-toggle="table" data-search="true"
+			data-show-refresh="true" data-show-toggle="true"
+			data-toolbar="#toolbar" data-pagination="true"
+			data-side-pagination="client">
+			<thead>
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th data-field="procedureIdForDelete" data-visible="false">procedureId</th>
+					<th data-field="procedureId" data-formatter="generateId">工序号</th>
+					<th data-field="type">分析类别</th>
+					<th data-field="charmValue">魅力型需求(A)</th>
+					<th data-field="exceptValue">期望型需求(O)</th>
+					<th data-field="mustValue">基本型需求(B)</th>
+					<th data-field="indifferentValue">无差异需求(I)</th>
+					<th data-field="reverseValue">反向型需求(R)</th>
+					<th data-field="problemValue">问题问卷(Q)</th>
+					<th data-field="result">分类结果(R)</th>
+					<th data-field="action" data-formatter="actionFormatter"
+						data-events="actionEvents">编辑</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div id="main" style="width: 600px; height: 600px;"></div>
+	
+<!-- 添加问卷结果模态框 -->
 	<div class="modal fade" id="itemAdd" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -174,9 +132,8 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
 				</div>
-
-				<div class="modal-body">
-					<div id="table" class="table-editable">
+				<div id='tableBody'class="modal-body">
+					<div id="modelTable" class="table-editable">
 						<table class="table-hover table-bordered table">
 							<tr>
 								<th colspan="2" style="text-align: center;">评价类别：</th>
@@ -208,27 +165,68 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/decorators/banner2.jsp"></jsp:include>	
 	
-	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
-	<script src='js/jquery-ui.min.js'></script>
-	<script src='js/underscore.js'></script>
-	<script src="js/solveData.js"></script>
-	<script
-		src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- 编辑问卷结果模态框 -->
+	<div class="modal fade" id="modifyItem" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
+				</div>
+				<div id='tableBodyModify'class="modal-body">
+					<div id="modelTable" class="table-editable">
+						<table class="table-hover table-bordered table">
+							<tr>
+								<th colspan="2" style="text-align: center;">评价类别：</th>
+								<th colspan="5" style="text-align: center;"
+									contenteditable="true"></th>
+							</tr>
+							<tr>
+								<th colspan="2" style="text-align: center;">产品/服务需求</th>
+								<th colspan="5" style="text-align: center;">负向问题（没有该项功能）</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th>量表</th>
+								<th>喜欢</th>
+								<th>理应如此</th>
+								<th>无所谓</th>
+								<th>能忍受</th>
+								<th>不喜欢</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						id="export-btn" onclick="updataItem()">更新</button>
+					<p id="export"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/outerJs/jquery.min.js"></script>
+	<script src="js/outerJs/bootstrap-table.min.js"></script>
+	<script src="js/outerJs/bootstrap-table-zh-CN.min.js"></script>
+	<script src='js/outerJs/jquery-ui.min.js'></script>
+	<script src='js/outerJs/underscore.js'></script>
+	<script src="js/innerJs/solveData.js"></script>
+	<script src="js/innerJs/tableFeature.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/typeahead-bs2.min.js"></script>
-	<script type="text/javascript"
-		src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript"
-		src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
-	<script type="text/javascript"
-		src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+	<script type="text/javascript" src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+	<script type="text/javascript" src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<script type="text/javascript" src="assets/js/ace-elements.min.js"></script>
 	<script type="text/javascript" src="assets/js/ace.min.js"></script>
-	<script src="js/button.js"></script>
+	<script src="js/innerJs/modelPop.js"></script>
+	<script src="js/innerJs/buttonFeature.js"></script>
+	<script src="js/innerJs/submit.js"></script>
 </body>
 </html>
