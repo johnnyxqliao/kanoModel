@@ -22,6 +22,7 @@ function getTableData() {
 }
 
 function drawKano() {
+	
 	data = getTableData();
 	var myChart = echarts.init(document.getElementById('main'));
 	var dimensions = [ 'name', 'Price', 'Prime cost', 'Prime cost min',

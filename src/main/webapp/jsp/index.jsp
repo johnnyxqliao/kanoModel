@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 <link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
 <link rel="stylesheet" href="assets/css/datepicker.css" />
-<link rel="stylesheet" href="assets/css/ui.jqgrid.css" />
 <link rel="stylesheet" href="assets/css/ace.min.css" />
 <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
@@ -178,7 +177,7 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
 				</div>
-				<div id='tableBodyModify'class="modal-body">
+				<div id='tableBodyModify'class="modal-body-modify">
 					<div id="modelTable" class="table-editable">
 						<table class="table-hover table-bordered table">
 							<tr>
@@ -212,13 +211,14 @@
 		</div>
 	</div>
 	<script src="js/outerJs/jquery.min.js"></script>
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script> -->
 	<script src="js/outerJs/bootstrap-table.min.js"></script>
 	<script src="js/outerJs/bootstrap-table-zh-CN.min.js"></script>
 	<script src='js/outerJs/jquery-ui.min.js'></script>
 	<script src='js/outerJs/underscore.js'></script>
 	<script src="js/innerJs/solveData.js"></script>
 	<script src="js/innerJs/tableFeature.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/outerJs/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/typeahead-bs2.min.js"></script>
 	<script type="text/javascript" src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
@@ -228,5 +228,6 @@
 	<script src="js/innerJs/modelPop.js"></script>
 	<script src="js/innerJs/buttonFeature.js"></script>
 	<script src="js/innerJs/submit.js"></script>
+	<script src="js/innerJs/sendDataAjax.js"></script>
 </body>
 </html>

@@ -49,6 +49,6 @@ function solveModel(){
     		maxName = resultArr[2*i+1];
     	}
     }
-    var modelStr =$('#tableBody').html();
-    return [tableArr[5],charmValue,exceptValue,mustValue,indifferentValue,reverseValue,problemValue,maxName,modelStr];
+//    var modelStr =$('.modal-body-modify').html();
+    return [tableArr[5],charmValue,exceptValue,mustValue,indifferentValue,reverseValue,problemValue,maxName];
 }

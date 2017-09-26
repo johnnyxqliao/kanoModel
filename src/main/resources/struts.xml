@@ -43,10 +43,9 @@
 	</package>
 
 	<package name="web.action" extends="struts-default">
-		<action name="saveData" class="xjtu.web.action.saveData"
+		<action name="getAjaxData" class="xjtu.web.action.getAjaxData"
 			method="test">
-			<param name="savePath">/uploadFiles</param>
-			<result name="success">/test.jsp</result>
+			<result name="success">/jsp/index2.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 	</package>

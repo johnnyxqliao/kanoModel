@@ -1,6 +1,6 @@
 //添加数据
 function addrow() {
-	$("#modelTable").remove();
+	$(".table-editable").remove();
 	$("#tableBody").append(originTable);
 	$('#itemAdd').modal('show');
 }
@@ -14,8 +14,9 @@ function generateId(value,row,index) {
 var modelTableArr = [];
 function addItem() {
 	var datanum = $('#myBootstrapTtable').bootstrapTable('getData').length;
+//	console.log(JSON.stringify($('#myBootstrapTtable').bootstrapTable('getData')));
 	var modelTableData = solveModel();
-	modelTableArr.push(modelTableData[8]);
+	modelTableArr.push($('.modal-body').html());
 	var rowdata= {
 			procedureIdForDelete:datanum+1,
 			type:modelTableData[0],
@@ -33,7 +34,7 @@ function addItem() {
 //更新表格数据
 function updataItem() {
 	var modelTableData = solveModel();
-	modelTableArr.splice(updateindex, 1, modelTableData[8]);
+	modelTableArr.splice(updateindex, 1, $('.modal-body-modify').html());
 	var rowdata= {
 			type:modelTableData[0],
 			charmValue:modelTableData[1],
