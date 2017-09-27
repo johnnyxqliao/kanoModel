@@ -2,27 +2,32 @@
 function getTableData() {
 	var kanoTable = document.getElementById('myBootstrapTtable');
 	var kanoTableData = kanoTable.outerText.split('\n');
-	kanoTableData.splice(0, 8);
+	kanoTableData.splice(0, 11);
 
 	var data = [];
 	for (var i = 0; i < kanoTableData.length - 1; i++) {
 		var kanoData = kanoTableData[i].split('	');
-		for (var j = 2; j < 6; j++) {
+		kanoData.splice(1,1);
+		for (var j = 2; j < 8; j++) {
 			kanoData[j] = Number(kanoData[j]);
 		}
-		var kanoSi = (kanoData[2] + kanoData[3])
-				/ (kanoData[2] + kanoData[3] + kanoData[4] + kanoData[5]);
-		var kanoDsi = (kanoData[3] + kanoData[4])
-				/ (kanoData[2] + kanoData[3] + kanoData[4] + kanoData[5]);
+		var kanoTotal = (kanoData[2] + kanoData[3] + kanoData[4] + kanoData[5]);
+		var kanoSi = (kanoData[2] + kanoData[3]) / kanoTotal;
+		var kanoDsi = (kanoData[3] + kanoData[4]) / kanoTotal;
 		var resultData = [ kanoData[1], kanoDsi, kanoSi, kanoSi - 0.05,
 				kanoSi + 0.05, kanoDsi - 0.05, kanoDsi + 0.05 ];
 		data.push(resultData);
 	}
-	return data;
+	if(kanoDsi==0||kanoSi==0||kanoTotal==0){
+		alert("数据有问题，请重新编辑");
+	}else{
+		return data;
+	}
 }
 
 function drawKano() {
-	
+	$('#main').remove();
+	$('.fixed-table-container').append('<div id="main" style="width: 600px; height: 600px;"></div>');
 	data = getTableData();
 	var myChart = echarts.init(document.getElementById('main'));
 	var dimensions = [ 'name', 'Price', 'Prime cost', 'Prime cost min',
@@ -120,7 +125,7 @@ function drawKano() {
 					type : 'average',
 					name : '平均值'
 				}, {
-					xAxis : 0.5
+					xAxis : 0.6
 				}, ]
 			},
 			data : data,
@@ -153,7 +158,7 @@ function drawKano() {
 			type : 'scatter',
 			symbolSize : 1,
 			symbol : 'roundRect',
-			data : [ [ 0.25, 0.45 ] ],
+			data : [ [ 0.25, 0.55 ] ],
 			label : {
 				normal : {
 					position : 'left',
@@ -179,7 +184,7 @@ function drawKano() {
 			type : 'scatter',
 			symbolSize : 1,
 			symbol : 'roundRect',
-			data : [ [ 0.25, 0.95 ] ],
+			data : [ [ 0.25, 1.05 ] ],
 			label : {
 				normal : {
 					position : 'left',
@@ -205,7 +210,7 @@ function drawKano() {
 			type : 'scatter',
 			symbolSize : 1,
 			symbol : 'roundRect',
-			data : [ [ 0.75, 0.45 ] ],
+			data : [ [ 0.85, 0.55 ] ],
 			label : {
 				normal : {
 					position : 'left',
@@ -231,7 +236,7 @@ function drawKano() {
 			type : 'scatter',
 			symbolSize : 1,
 			symbol : 'roundRect',
-			data : [ [ 0.75, 0.95 ] ],
+			data : [ [ 0.85, 1.05 ] ],
 			label : {
 				normal : {
 					position : 'left',
@@ -257,7 +262,7 @@ function drawKano() {
 			type : 'scatter',
 			symbolSize : 1,
 			symbol : 'roundRect',
-			data : [ [ 1, 1 ] ],
+			data : [ [ 1.2, 1.2 ] ],
 			label : {
 				normal : {
 					position : 'left',
@@ -265,7 +270,44 @@ function drawKano() {
 					show : false,
 				}
 			}
-		} ]
+		},{
+			type : 'scatter',
+			symbolSize : 1,
+			symbol : 'roundRect',
+			data : [ [ 0.5, 1.2 ] ],
+			label : {
+				normal : {
+					position : 'left',
+					distance : 10,
+					show : false,
+				}
+			}
+		},{
+			type : 'scatter',
+			symbolSize : 1,
+			symbol : 'roundRect',
+			data : [ [ 0.5, 0.5 ] ],
+			label : {
+				normal : {
+					position : 'left',
+					distance : 10,
+					show : false,
+				}
+			}
+		},{
+			type : 'scatter',
+			symbolSize : 1,
+			symbol : 'roundRect',
+			data : [ [ 1.2, 0.5 ] ],
+			label : {
+				normal : {
+					position : 'left',
+					distance : 10,
+					show : false,
+				}
+			}
+		}
+		]
 	};
 	//添加文本框
 	for (var i = 0; i < data.length; i++) {

@@ -38964,7 +38964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                result = max;
 	            }
 	            else if (statisticType === 'average') {
-	                result = -0.5;
+	                result = sum / len;
 	            }
 	            else {
 	                result = sum;
@@ -72357,7 +72357,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    count++;
 	                }
 	            }, true);
-	            return 0.5;
+	            return 0.6;
 	        }
 	        else {
 	            return data.getDataExtent(valueDataDim, true)[type === 'max' ? 1 : 0];

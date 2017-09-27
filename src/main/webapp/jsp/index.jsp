@@ -106,11 +106,11 @@
 					<th data-field="type">分析类别</th>
 					<th data-field="charmValue">魅力型需求(A)</th>
 					<th data-field="exceptValue">期望型需求(O)</th>
-					<th data-field="mustValue">基本型需求(B)</th>
+					<th data-field="mustValue">基本型需求(M)</th>
 					<th data-field="indifferentValue">无差异需求(I)</th>
 					<th data-field="reverseValue">反向型需求(R)</th>
 					<th data-field="problemValue">问题问卷(Q)</th>
-					<th data-field="result">分类结果(R)</th>
+					<th data-field="result" style="display:none">分类结果(R)</th>
 					<th data-field="action" data-formatter="actionFormatter"
 						data-events="actionEvents">编辑</th>
 				</tr>
@@ -119,7 +119,40 @@
 	</div>
 	<div id="main" style="width: 600px; height: 600px;"></div>
 	
-<!-- 添加问卷结果模态框 -->
+	
+	<div class="col-sm-6 widget-container-span ui-sortable">
+		<div class="widget-box" style="opacity: 1;">
+			<div class="widget-header">
+				<h5 class="smaller">Tabbed</h5>
+
+				<div class="widget-toolbar no-border">
+					<ul class="nav nav-tabs" id="myTab">
+						<li class=""><a data-toggle="tab" href="#home">Home</a></li>
+
+						<li class=""><a data-toggle="tab" href="#profile">Profile</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="widget-body">
+				<div class="widget-main padding-6">
+					<div class="tab-content">
+						<div id="home" class="tab-pane">
+							<p>Raw denim you probably haven't heard of them jean shorts
+								Austin.</p>
+						</div>
+
+						<div id="profile" class="tab-pane">
+							<p>Food truck fixie locavore, accusamus mcsweeney's marfa
+								nulla single-origin coffee squid.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 添加问卷结果模态框 -->
 	<div class="modal fade" id="itemAdd" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -131,7 +164,7 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
 				</div>
-				<div id='tableBody'class="modal-body">
+				<div id='tableBody' class="modal-body">
 					<div id="modelTable" class="table-editable">
 						<table class="table-hover table-bordered table">
 							<tr>
@@ -164,7 +197,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 编辑问卷结果模态框 -->
 	<div class="modal fade" id="modifyItem" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
@@ -177,7 +210,7 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Kano模型分类结果统计</h4>
 				</div>
-				<div id='tableBodyModify'class="modal-body-modify">
+				<div id='tableBodyModify' class="modal-body-modify">
 					<div id="modelTable" class="table-editable">
 						<table class="table-hover table-bordered table">
 							<tr>
@@ -212,22 +245,22 @@
 	</div>
 	<script src="js/outerJs/jquery.min.js"></script>
 	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script> -->
-	<script src="js/outerJs/bootstrap-table.min.js"></script>
-	<script src="js/outerJs/bootstrap-table-zh-CN.min.js"></script>
-	<script src='js/outerJs/jquery-ui.min.js'></script>
-	<script src='js/outerJs/underscore.js'></script>
-	<script src="js/innerJs/solveData.js"></script>
-	<script src="js/innerJs/tableFeature.js"></script>
-	<script src="js/outerJs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/outerJs/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="js/outerJs/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript" src='js/outerJs/jquery-ui.min.js'></script>
+	<script type="text/javascript" src='js/outerJs/underscore.js'></script>
+	<script type="text/javascript" src="js/innerJs/solveData.js"></script>
+	<script type="text/javascript" src="js/innerJs/tableFeature.js"></script>
+	<script type="text/javascript" src="js/outerJs/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/typeahead-bs2.min.js"></script>
 	<script type="text/javascript" src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
 	<script type="text/javascript" src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<script type="text/javascript" src="assets/js/ace-elements.min.js"></script>
 	<script type="text/javascript" src="assets/js/ace.min.js"></script>
-	<script src="js/innerJs/modelPop.js"></script>
-	<script src="js/innerJs/buttonFeature.js"></script>
-	<script src="js/innerJs/submit.js"></script>
-	<script src="js/innerJs/sendDataAjax.js"></script>
+	<script type="text/javascript" src="js/innerJs/modelPop.js"></script>
+	<script type="text/javascript" src="js/innerJs/buttonFeature.js"></script>
+	<script type="text/javascript" src="js/innerJs/drawKano.js"></script>
+	<script type="text/javascript" src="js/innerJs/sendDataAjax.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
-function drawKano() {
-//	var mytable1 = document.getElementById('myBootstrapTtable');
-	TableToJson('myBootstrapTtable');
-	document.getElementById("formid").submit();
-}
+//function drawKano() {
+////	var mytable1 = document.getElementById('myBootstrapTtable');
+//	TableToJson('myBootstrapTtable');
+//	document.getElementById("formid").submit();
+//}
 
 /*
  * 将表格数据转换为json

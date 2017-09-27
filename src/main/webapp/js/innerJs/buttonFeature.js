@@ -47,7 +47,6 @@ function updataItem() {
 	    };
 	$('#myBootstrapTtable').bootstrapTable('updateRow', {index: updateindex, row: rowdata});
 }
-
 //编辑表格
 function actionFormatter(value, row, index) {
     return [
@@ -77,4 +76,8 @@ function deleterow() {
 		field : 'procedureIdForDelete',
 		values : ids
 	});
+//	ids.forEach(function(element,index,array){
+//		modelTableArr.splice(updateindex, 1, $('.modal-body-modify').html());
+//	});
+//	modelTableArr.splice(updateindex, 1, $('.modal-body-modify').html());
 }
