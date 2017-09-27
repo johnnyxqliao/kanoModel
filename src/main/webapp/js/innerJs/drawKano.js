@@ -27,7 +27,7 @@ function getTableData() {
 
 function drawKano() {
 	$('#main').remove();
-	$('.fixed-table-container').append('<div id="main" style="width: 600px; height: 600px;"></div>');
+	$('#solveResult').append('<div id="main" style="width: 600px; height: 600px;"></div>');
 	data = getTableData();
 	var myChart = echarts.init(document.getElementById('main'));
 	var dimensions = [ 'name', 'Price', 'Prime cost', 'Prime cost min',

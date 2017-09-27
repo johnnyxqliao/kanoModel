@@ -27,14 +27,15 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="assets/css/ace-fonts.css" />
+	<!-- 	<link rel="stylesheet" href="assets/css/ace-fonts.css" /> -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" id="main-ace-style" />
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="assets/js/ace-extra.min.js"></script>
 
 		
-		<link rel="stylesheet" href="decorators/decorators.css" />
+		<!-- <link rel="stylesheet" href="decorators/decorators.css" /> -->
 		
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

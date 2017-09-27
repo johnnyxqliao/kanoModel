@@ -4,15 +4,9 @@
     String basePath = "http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/";
     String appPath = "http://innovation.xjtu.edu.cn:80/InnovationToolsPlatform/";
 %>
-
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
     <meta charset="UTF-8"/>
     <title>创新方法工具平台</title>
 
@@ -25,7 +19,7 @@
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace-skins.min.css"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace-modify.css"/>
 
-    <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/ace-extra.min.js"></script>
 
 
@@ -74,7 +68,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/css/gallery-style.css" />
-<script src="./static/js/showall.js"></script>
+<!-- <script src="./static/js/showall.js"></script> -->
 </head>
 
 <%
@@ -273,12 +267,7 @@
 
 <!-- 内容区域 -->
 <div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'collapsed')
-        } catch (e) {
-        }
-    </script>
+   
 
     <!-- 主内容区域 -->
     <div class="main-container-inner">
@@ -286,9 +275,9 @@
         <!-- END导航栏 -->
 
         <!-- 主页面内容 -->
-        <div class="main-content">
+  <!--       <div class="main-content">
             <decorator:body/>
-        </div>
+        </div> -->
         <!-- /.main-content -->
         <!-- END主页面内容 -->
     </div>
