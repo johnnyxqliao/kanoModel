@@ -76,8 +76,12 @@ function deleterow() {
 		field : 'procedureIdForDelete',
 		values : ids
 	});
-//	ids.forEach(function(element,index,array){
-//		modelTableArr.splice(updateindex, 1, $('.modal-body-modify').html());
-//	});
-//	modelTableArr.splice(updateindex, 1, $('.modal-body-modify').html());
+}
+function testData(){
+	var kanoTable = document.getElementById('myBootstrapTtable');
+	var kanoTableData = kanoTable.outerText.split('\n');
+	if(kanoTableData.length<14 && kanoTableData[11]=='没有找到匹配的记录'){
+		alert("请添加数据");
+		window.location.href = 'originData';
+	}
 }

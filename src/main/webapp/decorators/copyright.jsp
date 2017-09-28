@@ -12,12 +12,8 @@
 		<meta charset="utf-8" />
 		
 		<!-- 引入css -->
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
-		<link href="css/phoneresponsable.css" rel="stylesheet" media="screen and (max-width: 480px)" />
-		
 		<!-- 引入js -->
-		<script src="assets/js/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="assets/js/jquery.dataTables.min.js"></script>
 		
 		<title>Footer</title><!-- 用户界面标题 -->

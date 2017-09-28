@@ -12,24 +12,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- basic styles -->
-    <link href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace.min.css"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace-rtl.min.css"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace-skins.min.css"/>
     <link rel="stylesheet" href="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/css/ace-modify.css"/>
-
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/ace-extra.min.js"></script>
-
-
-    <!--[if lte IE 8]>
-    <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/excanvas.min.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-    </script>
     <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/bootstrap.min.js"></script>
     <script src="http://innovation.xjtu.edu.cn:80/StaticFiles/web-resources/frames/mes/1.0-SNAPSHOT/assets/js/typeahead-bs2.min.js"></script>
 
@@ -287,7 +277,6 @@
 <!-- /.main-container -->
 <!-- END内容区域 -->
 <!-- inline scripts related to this page -->
-</body>
 <script>
     //var origin=document.location.origin;
     var origin="http://innovation.xjtu.edu.cn";
@@ -345,5 +334,7 @@
     initTemplatesAndHrefs();
 
 </script>
+</body>
+
 </html>
 
